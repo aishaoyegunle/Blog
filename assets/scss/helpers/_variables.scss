@@ -1,0 +1,37 @@
+// colors
+$colors: (
+  c-primary: #1473e6,
+  c-black: #2c2c2c,
+  c-black-20: #6e6e6e,
+  c-black-30: #4b4b4b,
+);
+
+// fonts
+$font-families: (
+  sf-text: 'SFProText',
+  sf-display: 'SFProDisplay',
+);
+
+$font-sizes: (
+  sm: 0.75rem,
+  //12px
+  base: 0.875rem,
+  //14px
+  rg: 1rem,
+  //16px
+  lg: 1.125rem,
+  //18px
+  xl: 1.25rem,
+  //20px
+  2xl: 1.375rem,
+  //22px
+  3xl: 1.5rem,
+  //24px
+  4xl: 1.75rem,
+  //28px
+  5xl: 2rem,
+  //32px
+);
+
+// spacing
+$gap: 10px;

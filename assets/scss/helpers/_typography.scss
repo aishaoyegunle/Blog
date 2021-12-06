@@ -1,0 +1,25 @@
+/* Webfont: SFProDisplay-Regular */
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  src: url(~@/assets/fonts/SF-Pro-Display-Regular.eot);
+  src: url(~@/assets/fonts/SF-Pro-Display-Regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(~@/assets/fonts/SF-Pro-Display-Regular.woff) format('woff'),
+    url(~@/assets/fonts/SF-Pro-Display-Regular.ttf) format('truetype');
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: SFProText-Regular */
+@font-face {
+  font-family: 'SFProText';
+  font-style: normal;
+  src: url(~@/assets/fonts/SF-Pro-Text-Regular.eot);
+  src: url(~@/assets/fonts/SF-Pro-Text-Regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(~@/assets/fonts/SF-Pro-Text-Regular.woff) format('woff'),
+    url(~@/assets/fonts/SF-Pro-Text-Regular.ttf) format('truetype');
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
