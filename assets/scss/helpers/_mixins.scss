@@ -39,7 +39,7 @@
   cursor: pointer;
   @include font-family(sf-display);
   line-height: 21px;
-  @include font-size(2xl);
+  @include font-size(lg);
   background-color: #000000;
   color: color(c-white);
   padding: $gap + 2 $gap * 5.5;

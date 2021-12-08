@@ -50,6 +50,7 @@
     &--title {
       @include font-size(lg);
       color: color(c-black);
+      @include font-family(sf-display);
       font-weight: bold;
       line-height: 26px;
       margin-top: $gap - 2;

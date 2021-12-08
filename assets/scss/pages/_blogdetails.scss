@@ -54,7 +54,8 @@
     color: color(c-black);
     font-weight: bold;
     margin-bottom: $gap * 2.3;
-    @include font-size(2xl);
+    @include font-size(3xl);
+    @include font-family(sf-display);
     line-height: 29px;
   }
   &__articles {
