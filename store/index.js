@@ -65,7 +65,7 @@ export const actions = {
   },
   async updateAllPosts({ state, commit }, payload) {
     try {
-      await axios.get(`https://techcrunch.com/wp-json/wp/v2/posts?page=${payload}&per_page=12&_embed=1`).then(res => {
+      await axios.get(`https://techcrunch.com/wp-json/wp/v2/posts?page=${payload}&per_page=15&_embed=1`).then(res => {
         const posts = res.data.filter(el => el.status === "publish")
         .map(({ id, slug, title, excerpt, date, content, jetpack_featured_media_url, _embedded }) => ({
           id,

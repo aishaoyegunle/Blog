@@ -4,7 +4,7 @@ import getRoutes from './utils/getRoutes'
 const dynamicRoutes = () => {
   return axios
     .get(
-      'https://techcrunch.com/wp-json/wp/v2/posts?_fields=id,slug&per_page=100&offset=0'
+      'https://techcrunch.com/wp-json/wp/v2/posts?_fields=id,slug&per_page=15&offset=0'
     )
     .then((res) => {
       return res.data.map((post) => `/blog/${post.slug}`)
@@ -65,6 +65,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -79,7 +81,7 @@ export default {
   },
 
   sitemap: {
-    hostname: '',
+    hostname: 'https://fw-blog.netlify.app',
     gzip: true,
     path: '/sitemap.xml',
     cacheTime: 1000 * 60 * 60 * 2,
