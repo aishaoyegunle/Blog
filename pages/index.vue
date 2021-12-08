@@ -2,13 +2,14 @@
   <div class="container">
     <header v-if="Object.keys(getFeaturedPost).length" class="hero">
       <div class="hero__img" >
-        <img :src="getFeaturedPost.jetpack_featured_media_url"  alt="image"/> 
+        <img :src="getFeaturedPost.jetpack_featured_media_url"  :alt="getFeaturedPost.title.rendered"/> 
       </div>
       <div class="hero__content">
         <p class="hero__content--top"><span class="hero__content--category">{{getFeaturedPost._embedded['wp:term'][0][0].name}}</span><span class="hero__content--separator">&#8226;</span><span class="hero__content--release">{{ dateFormatter(getFeaturedPost.date) }}</span></p>
         <h5 class="hero__content--title" v-html="getFeaturedPost.title.rendered"></h5>
         <p class="hero__content--desc" v-html="getFeaturedPost.excerpt.rendered"></p>
         <div class="hero__content--footer">
+          <!-- TODO: dynamically determine the average read time based on number of words-->
           <p>3 Min Read</p>
           <nuxt-link
             :to="{

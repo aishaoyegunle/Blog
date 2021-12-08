@@ -63,12 +63,32 @@ export default {
 
 <style lang="scss">
 .article--content{
-   img {
-      width: 100%;
-      max-width: 100%;
-      object-fit: contain;
-      height: auto;
-      border-radius: 5px;
-    } 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .wp-caption{
+    width: 100%;
+    max-width: 350px;
+    align-self: center;
+  }
+  .wp-caption-text{
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: $gap*2;
+  }
+  img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+    margin: $gap*2 auto;
+  } 
+   @include respond(md) {
+    .wp-caption,.wp-caption-text,img{
+      max-width: 500px;
+    }
+  }
 }
 </style>

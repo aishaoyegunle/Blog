@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card__img" >
-        <img :src="post.jetpack_featured_media_url" alt="image" />
+        <img :src="post.jetpack_featured_media_url" :alt="post.title.rendered" />
     </div>
     <div class="card__content">
       <p class="card__content--top">
@@ -12,6 +12,7 @@
       <h5 class="card__content--title" v-html="post.title.rendered"></h5>
       <p class="card__content--desc" v-html="post.excerpt.rendered"></p>
       <div class="card__content--footer">
+        <!-- TODO: dynamically determine the average read time based on number of words-->
         <p>3 Min Read</p>
          <nuxt-link
             :to="{
@@ -21,7 +22,7 @@
             class="card__content--link"
           >
           <span>Read Full</span>
-          <img :src="require(`~/assets/images/arrow-forward.svg`)" alt="read full" class="" />
+          <img :src="require(`~/assets/images/arrow-forward.svg`)" alt="read full" />
          </nuxt-link>
       </div>
     </div>

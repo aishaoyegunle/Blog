@@ -2,7 +2,7 @@
   <div id="nav--container" class="container">
     <nav class="navigation">
       <nuxt-link :to="{ path: '/' }" class="navigation__logo">
-        <img :src="require(`~/assets/images/logo.svg`)" alt="logo" />
+        <img :src="require(`~/assets/images/logo.svg`)" alt="dasdas" />
       </nuxt-link>
       <ul class="navigation__menu">
         <li class="navigation__menu--item"><img :src="require(`~/assets/images/twitter.svg`)" alt="twitter" /></li>
