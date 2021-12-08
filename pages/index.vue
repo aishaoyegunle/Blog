@@ -1,19 +1,19 @@
 <template>
   <div class="container">
-    <header class="hero">
+    <header v-if="Object.keys(getFeaturedPost).length" class="hero">
       <div class="hero__img" >
-        <img :src="require(`~/assets/images/card-img.png`)" alt="image" />
+        <img :src="getFeaturedPost.jetpack_featured_media_url"  alt="image"/> 
       </div>
       <div class="hero__content">
-        <p class="hero__content--top"><span class="hero__content--category">{{featuredPost && featuredPost._embedded['wp:term'][0][0].name}}</span><span class="hero__content--separator">&#8226;</span><span class="hero__content--release">{{ featuredPost && dateFormatter(featuredPost.date) }}</span></p>
-        <h5 class="hero__content--title" v-html="featuredPost && featuredPost.title.rendered"></h5>
-        <p class="hero__content--desc" v-html="featuredPost && featuredPost.excerpt.rendered"></p>
-        <div v-if="featuredPost" class="hero__content--footer">
+        <p class="hero__content--top"><span class="hero__content--category">{{getFeaturedPost._embedded['wp:term'][0][0].name}}</span><span class="hero__content--separator">&#8226;</span><span class="hero__content--release">{{ dateFormatter(getFeaturedPost.date) }}</span></p>
+        <h5 class="hero__content--title" v-html="getFeaturedPost.title.rendered"></h5>
+        <p class="hero__content--desc" v-html="getFeaturedPost.excerpt.rendered"></p>
+        <div class="hero__content--footer">
           <p>3 Min Read</p>
           <nuxt-link
             :to="{
               name: 'slug',
-              params: { slug: featuredPost.slug + '-' + featuredPost.id },
+              params: { slug: getFeaturedPost.slug + '-' + getFeaturedPost.id },
             }"
             class="hero__content--link"
           >
@@ -23,14 +23,23 @@
         </div>
       </div>
     </header>
-
+    <header v-else>
+      <CardLoader />
+    </header>
     <main>
-      <div class="posts">
+      <div v-if="getAllPosts.length" class="posts">
         <template v-for="post in getAllPosts">
-          <Card :key="post.id" :post='post'/>
+          <Card :key="post.id" :post='post' />
         </template>
       </div>
-      <button class="btn--solid posts--btn" @click="loadMore()">LOAD MORE</button>
+      <div v-else class="posts">
+        <template v-for="item in 12">
+          <CardLoader :key="item" :card-type="'card'" />
+        </template>
+      </div>
+      <button v-if="getAllPosts.length" class="btn--solid posts--btn" :class="{ 'is-loading': isLoading }" @click="loadMore()">
+        {{isLoading ?'LOADING':'LOAD MORE'}}
+      </button>
     </main>
     
     <footer class="footer">
@@ -39,41 +48,41 @@
        <br/>
        Getting started is easy. Just pay a one time <b>$25 fee</b> and everything is ready to go.
       </p>
-      <button class="btn--solid">JOIN US</button>
+      <FlutterwavePayment/>
     </footer>
-
   </div>
 </template>
 
 <script>
 import { mapGetters,mapActions } from 'vuex';
 import dateFormatter from '~/mixins/dateFormatter'
-
 export default {
   components: {
     Card: () => import('@/components/Card.vue'),
+    CardLoader: () => import('@/components/CardLoader.vue'),
+    FlutterwavePayment: () => import('@/components/FlutterwavePayment.vue'),
   },
   mixins: [dateFormatter],
   data(){
     return{
-      currentPage:1
+      currentPage:1,
+      isLoading:false,
     }
   },
   computed: {
-    ...mapGetters(['getAllPosts']),
-    featuredPost(){
-     return this.getAllPosts[0]
-    }
+    ...mapGetters(['getAllPosts','getFeaturedPost']),
   },
   created() {
     this.fetchAllPosts()
   },
   methods:{
     ...mapActions(['fetchAllPosts','updateAllPosts']),
-    loadMore(){
+    async loadMore(){
+      this.isLoading= true
       this.currentPage+=1
       const payload = this.currentPage;
-      this.updateAllPosts(payload)
+      await this.updateAllPosts(payload)
+      this.isLoading= false
     }
   }
 }

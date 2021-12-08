@@ -18,6 +18,7 @@
   border-radius: 5px;
   background-color: color(c-white);
   padding: $gap;
+  min-width: 350px;
   &__img {
     border-radius: 5px;
     img {
@@ -29,6 +30,8 @@
   &__content {
     display: flex;
     flex-direction: column;
+    margin-top: $gap + 6;
+
     &--top {
       @include font-size(sm);
       font-weight: 500;
@@ -50,7 +53,6 @@
       font-weight: bold;
       line-height: 26px;
       margin-top: $gap - 2;
-
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -89,19 +91,18 @@
 
     &__img {
       flex: 0 0 45%;
-      width: 500px;
       height: 280px;
     }
     &__content {
       flex: 0 0 54%;
       padding-top: $gap - 6;
+      margin-top: 0;
       &--desc {
         margin-bottom: $gap * 3.5;
         margin-right: $gap;
         line-height: 21px;
         @include font-size(base);
         color: color(c-black-20);
-
         display: -webkit-box;
         -webkit-line-clamp: 7;
         -webkit-box-orient: vertical;
@@ -119,6 +120,26 @@
   &--btn {
     margin: 0 auto;
     display: flex;
+    &.is-loading {
+      &:before {
+        content: ' ';
+        width: 16px;
+        height: 16px;
+        margin-right: $gap;
+        border-radius: 50%;
+        border: 6px solid color(c-white);
+        border-color: color(c-white) transparent color(c-white) transparent;
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
 

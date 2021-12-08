@@ -74,6 +74,10 @@ export default {
   build: {
   },
 
+  env: {
+    RAVE_KEY_TEST: process.env.RAVE_KEY_TEST,
+  },
+
   sitemap: {
     hostname: '',
     gzip: true,

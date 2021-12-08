@@ -1,8 +1,7 @@
 <template>
   <div class="card">
     <div class="card__img" >
-        <!-- <img :src="post.jetpack_featured_media_url" alt="image" /> -->
-        <img :src="require(`~/assets/images/card-img.png`)" alt="image" />
+        <img :src="post.jetpack_featured_media_url" alt="image" />
     </div>
     <div class="card__content">
       <p class="card__content--top">

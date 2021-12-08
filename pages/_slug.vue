@@ -1,22 +1,22 @@
 <template>
   <div class="container">
-    <article class="article">
+    <main class="article">
       <p>
         <span class="article--author">By {{article._embedded.author[0].name}}</span>
         <span class="article--separator">&#8226;</span>
         <span class="article--release">{{ article && dateFormatter(article.date) }}</span>
       </p>
       <h2 class="article--title" v-html="article && article.title.rendered"></h2>
-      <p class="article--content" v-html="article && article.content.rendered"></p>
-    </article>
-  <section class="related">
-    <h3 class="related__title">More Articles</h3>
-    <div class="related__articles">
-      <template v-for="post in relatedPosts" >
-        <Card :key="post.id" :post="post" />
-      </template>
-    </div>
-  </section>
+      <article class="article--content" v-html="article && article.content.rendered"></article>
+    </main>
+    <section v-if="relatedPosts.length" class="related">
+      <h3 class="related__title">More Articles</h3>
+      <div class="related__articles">
+        <template v-for="post in relatedPosts" >
+          <Card :key="post.id" :post="post" />
+        </template>
+      </div>
+    </section>
   </div>
 </template>
 
