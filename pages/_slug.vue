@@ -9,10 +9,11 @@
       <h2 class="article--title" v-html="article && article.title.rendered"></h2>
       <article class="article--content" v-html="article && article.content.rendered"></article>
     </main>
-    <section v-if="relatedPosts.length" class="related">
+
+    <section v-if="getRelatedPosts.length" class="related">
       <h3 class="related__title">More Articles</h3>
       <div class="related__articles">
-        <template v-for="post in relatedPosts" >
+        <template v-for="post in getRelatedPosts" >
           <Card :key="post.id" :post="post" />
         </template>
       </div>
@@ -21,7 +22,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions,mapGetters } from 'vuex';
+import axios from 'axios'
 import dateFormatter from '~/mixins/dateFormatter'
 
 export default {
@@ -32,21 +34,22 @@ export default {
   async asyncData({ params }) {
     const slug = params.slug.split('-')
     const id = slug[slug.length - 1]
-    const article = await fetch(
+    const article = await axios.get(
       `https://techcrunch.com/wp-json/wp/v2/posts/${id}?_embed=1`
-    ).then((res) => res.json())
+    ).then((res) => res.data)
     return { article }
   },
   data(){
     return{
-      relatedPosts:[]
     }
   },
-  computed: {},
+  computed: {
+    ...mapGetters(['getRelatedPosts']),
+  },
   async mounted() {
     this.$store.dispatch("fetchAllPosts");
     const payload = {category:this.article.categories[0],id:parseInt(this.article.id)}
-    this.relatedPosts =  await this.fetchRelatedPost(payload)
+    await this.fetchRelatedPost(payload)
   },
   methods:{
     ...mapActions(['fetchRelatedPost'])
