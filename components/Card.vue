@@ -5,7 +5,7 @@
     </div>
     <div class="card__content">
       <p class="card__content--top">
-        <span class="card__content--category">{{post._embedded['wp:term'][0][0].name}}</span>
+        <span class="card__content--category" v-html="post._embedded['wp:term'][0][0].name"></span>
         <span class="card__content--separator">&#8226;</span>
         <span class="card__content--release">{{ dateFormatter(post.date) }}</span>
       </p>

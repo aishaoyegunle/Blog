@@ -11,6 +11,19 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Webfont: SFProDisplay-Bold */
+@font-face {
+  font-family: 'SFProDisplay';
+  font-style: normal;
+  src: url(~@/assets/fonts/SF-Pro-Display-Bold.eot);
+  src: url(~@/assets/fonts/SF-Pro-Display-Bold.eot?#iefix)
+      format('embedded-opentype'),
+    url(~@/assets/fonts/SF-Pro-Display-Bold.woff) format('woff'),
+    url(~@/assets/fonts/SF-Pro-Display-Bold.ttf) format('truetype');
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
 /* Webfont: SFProText-Regular */
 @font-face {
   font-family: 'SFProText';
@@ -21,5 +34,18 @@
     url(~@/assets/fonts/SF-Pro-Text-Regular.woff) format('woff'),
     url(~@/assets/fonts/SF-Pro-Text-Regular.ttf) format('truetype');
   font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: SFProText-Bold */
+@font-face {
+  font-family: 'SFProText';
+  font-style: normal;
+  src: url(~@/assets/fonts/SF-Pro-Text-Bold.eot);
+  src: url(~@/assets/fonts/SF-Pro-Text-Bold.eot?#iefix)
+      format('embedded-opentype'),
+    url(~@/assets/fonts/SF-Pro-Text-Bold.woff) format('woff'),
+    url(~@/assets/fonts/SF-Pro-Text-Bold.ttf) format('truetype');
+  font-weight: bold;
   text-rendering: optimizeLegibility;
 }

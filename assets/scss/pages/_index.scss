@@ -43,6 +43,7 @@
     }
     &--category {
       color: color(c-black-30);
+      font-weight: bold;
     }
     &--release {
       color: color(c-black-20);
@@ -98,6 +99,9 @@
       flex: 0 0 54%;
       padding-top: $gap - 6;
       margin-top: 0;
+      &--title {
+        @include font-size(2xl);
+      }
       &--desc {
         margin-bottom: $gap * 3.5;
         margin-right: $gap;

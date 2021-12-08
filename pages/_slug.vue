@@ -2,7 +2,7 @@
   <div class="container">
     <main class="article">
       <p>
-        <span class="article--author">By {{article._embedded.author[0].name}}</span>
+        <span class="article--author">By {{article && article._embedded.author[0].name}}</span>
         <span class="article--separator">&#8226;</span>
         <span class="article--release">{{ article && dateFormatter(article.date) }}</span>
       </p>
