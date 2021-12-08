@@ -1,3 +1,16 @@
+import axios from 'axios'
+import getRoutes from './utils/getRoutes'
+
+const dynamicRoutes = () => {
+  return axios
+    .get(
+      'https://techcrunch.com/wp-json/wp/v2/posts?_fields=id,slug&per_page=100&offset=0'
+    )
+    .then((res) => {
+      return res.data.map((post) => `/blog/${post.slug}`)
+    })
+}
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -59,5 +72,21 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  sitemap: {
+    hostname: '',
+    gzip: true,
+    path: '/sitemap.xml',
+    cacheTime: 1000 * 60 * 60 * 2,
+    trailingSlash: true,
+    routes: () => {
+      return getRoutes()
+    },
+  },
+
+  generate: {
+    routes: dynamicRoutes,
+    fallback: true,
+  },
 }

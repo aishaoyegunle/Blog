@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  margin-top: $gap * 16.1;
+  padding: 0 $gap;
+
+  @include respond(md) {
+    max-width: 90%;
+    margin: $gap * 16.1 auto 0;
+  }
+  @include respond(xxl) {
+    max-width: 1600px;
+  }
+}
+
+.article {
+  width: 100%;
+  margin: 0 auto;
+  &--author {
+    color: color(c-black-30);
+    @include font-size(sm);
+  }
+  &--separator {
+    @include separator;
+    margin: 0 4px;
+  }
+  &--release {
+    @include font-size(sm);
+    color: color(c-black-20);
+  }
+  &--title {
+    @include font-size(5xl);
+    color: color(c-black);
+    font-weight: bold;
+    line-height: 38px;
+    margin-top: $gap;
+    margin-bottom: $gap * 2.3;
+  }
+  &--content {
+    @include font-size(base);
+    line-height: 21px;
+    color: color(c-black-20);
+  }
+
+  @include respond(md) {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+}
+
+.related {
+  margin-top: $gap * 5;
+  margin-bottom: $gap * 10;
+  &__title {
+    color: color(c-black);
+    font-weight: bold;
+    margin-bottom: $gap * 2.3;
+    @include font-size(2xl);
+    line-height: 29px;
+  }
+  &__articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: $gap * 4.7;
+  }
+}

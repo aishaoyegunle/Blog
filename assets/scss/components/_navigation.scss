@@ -1,0 +1,42 @@
+.container {
+  background-color: color(c-white);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  &.scroll {
+    border-bottom: 1px solid color(c-border);
+  }
+}
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $gap;
+  width: 100%;
+  margin: 0 auto;
+
+  &__menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--item {
+      margin: 0 $gap;
+      display: flex;
+      align-items: center;
+    }
+    &--separator {
+      @include separator;
+    }
+  }
+
+  @include respond(md) {
+    max-width: 90%;
+    padding: $gap $gap * 4;
+  }
+  @include respond(xxl) {
+    max-width: 1600px;
+  }
+}

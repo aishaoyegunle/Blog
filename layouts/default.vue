@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <Navigation />
     <Nuxt />
   </div>
@@ -12,3 +12,6 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

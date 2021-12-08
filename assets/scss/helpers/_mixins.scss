@@ -6,29 +6,23 @@
   font-size: get-font-size($keyword);
 }
 
+@mixin font-weight($keyword) {
+  font-weight: get-font-weight($keyword);
+}
+
 @mixin respond($breakpoint) {
-  @if ($breakpoint == xxs) {
-    @media only screen and (max-width: 20em) {
-      @content;
-    } // 320px
-  }
-  @if ($breakpoint == xs) {
-    @media only screen and (max-width: 36em) {
-      @content;
-    } // 567px
-  }
   @if ($breakpoint == md) {
-    @media only screen and (max-width: 48em) {
+    @media only screen and (min-width: 48em) {
       @content;
     } // 768px
   }
   @if ($breakpoint == lg) {
-    @media only screen and (max-width: 61.938em) {
+    @media only screen and (min-width: 64em) {
       @content;
-    } // 990px
+    } // 1024px
   }
   @if ($breakpoint == xl) {
-    @media only screen and (max-width: 75em) {
+    @media only screen and (min-width: 75em) {
       @content;
     } // 1200px
   }
@@ -37,4 +31,36 @@
       @content;
     } // 1700px
   }
+}
+// $--xl: 1920px !default;?
+
+@mixin btn--solid {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  @include font-family(sf-display);
+  line-height: 21px;
+  @include font-size(2xl);
+  background-color: #000000;
+  color: color(c-white);
+  padding: $gap + 2 $gap * 5.5;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin btn--link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: color(c-primary);
+  font-weight: bold;
+  @include font-size(sm);
+}
+
+@mixin separator {
+  @include font-size(sm);
+  color: color(c-black-20);
 }

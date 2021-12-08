@@ -1,9 +1,11 @@
 // colors
 $colors: (
   c-primary: #1473e6,
+  c-white: #ffffff,
   c-black: #2c2c2c,
   c-black-20: #6e6e6e,
   c-black-30: #4b4b4b,
+  c-border: #f5f5f5,
 );
 
 // fonts
@@ -31,6 +33,14 @@ $font-sizes: (
   //28px
   5xl: 2rem,
   //32px
+);
+
+$font-weights: (
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
 );
 
 // spacing
